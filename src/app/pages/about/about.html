@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h2 class="text-success">Historial de Compras</h2>
+  <div class="row">
+    @for (item of comprasRecuperadas; track item) {
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.producto }}</h5>
+            <p class="card-text">
+              <strong>Cantidad:</strong> {{ item.cantidad }}<br>
+              <strong>Dirección:</strong> {{ item.direccion }}
+            </p>
+            <span class="badge bg-primary">{{ item.fecha }}</span>
+          </div>
+        </div>
+      </div>
+    } @empty {
+      <p>No hay compras registradas aún.</p>
+    }
+  </div>
+</div>

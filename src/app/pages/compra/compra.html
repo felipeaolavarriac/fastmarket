@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <h2>Formulario de Compra</h2>
+  <form (ngSubmit)="registrarCompra()">
+    <input type="text" [(ngModel)]="producto" name="producto" class="form-control mb-2" placeholder="Nombre del Producto">
+    <input type="number" [(ngModel)]="cantidad" name="cantidad" class="form-control mb-2" placeholder="Cantidad">
+    <input type="text" [(ngModel)]="direccion" name="direccion" class="form-control mb-2" placeholder="Dirección de Envío">
+    
+    <button type="submit" class="btn btn-primary w-100">Finalizar Compra</button>
+  </form>
+</div>
