@@ -1,80 +1,110 @@
-<div class="shop-container">
-  
-  <button class="btn-back" *ngIf="categoriaSeleccionada !== 'todas'" (click)="categoriaSeleccionada = 'todas'">
+<div class="container mt-4 shop-container">
+  <button class="btn btn-outline-secondary mb-4" *ngIf="categoriaSeleccionada !== 'todas'" (click)="categoriaSeleccionada = 'todas'">
     ← Volver a Categorías
   </button>
 
-  <div class="category-grid" *ngIf="categoriaSeleccionada === 'todas'">
-    <div class="category-card" (click)="verCategoria('tecnologia')">
-      <h3>Mejora tu juego</h3>
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500" alt="Gaming">
-      <span class="link-text">Ver computación</span>
+  <div class="row" *ngIf="categoriaSeleccionada === 'todas'">
+    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'tecnologia'">
+      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500" class="card-img-top" alt="Gaming">
+        <div class="card-body text-center">
+          <h5 class="card-title">Mejora tu juego</h5>
+          <p class="text-primary">Ver computación</p>
+        </div>
+      </div>
     </div>
 
-    <div class="category-card" (click)="verCategoria('cocina')">
-      <h3>Electrodomésticos de cocina</h3>
-      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500" alt="Cocina">
-      <span class="link-text">Explorar cocina</span>
+    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'cocina'">
+      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
+        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500" class="card-img-top" alt="Cocina">
+        <div class="card-body text-center">
+          <h5 class="card-title">Electrodomésticos de cocina</h5>
+          <p class="text-primary">Explorar cocina</p>
+        </div>
+      </div>
     </div>
 
-    <div class="category-card" (click)="verCategoria('herramientas')">
-      <h3>Herramientas y construcción</h3>
-      <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=500" alt="Herramientas">
-      <span class="link-text">Ver herramientas</span>
+    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'herramientas'">
+      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
+        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=500" class="card-img-top" alt="Herramientas">
+        <div class="card-body text-center">
+          <h5 class="card-title">Herramientas y construcción</h5>
+          <p class="text-primary">Ver herramientas</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="products-view" *ngIf="categoriaSeleccionada !== 'todas'">
-    <h2 class="title-view">Resultados para "{{ categoriaSeleccionada | uppercase }}"</h2>
-    
-    <div class="product-list-grid">
-      
-      <ng-container *ngIf="categoriaSeleccionada === 'tecnologia'">
-        <div class="product-item" *ngFor="let item of ['Laptop Pro X1', 'Audífonos Noise', 'Monitor 34 UltraWide']">
-          <img [src]="item === 'Laptop Pro X1' ? 'https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MjgwNzc3fGltYWdlL3BuZ3xoOWUvaGI4LzE0MDgwNDY4MDkwOTEwLnBuZ3w4MzIxNDk3M2E4NTA5ZjY5ZjYzYTc5ZDk3MWYwNjk3OTczNzYxMjM2MDU0ZTQ0MDBjMTU0ZmRhZWUxM2Q2ODYx/lenovo-laptop-thinkpad-x1-carbon-gen-8-hero.png' : 
-                      item === 'Audífonos Noise' ? 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' : 
-                      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400'">
-          <div class="info">
-            <h4>{{ item }}</h4>
-            <p class="price">{{ precios[item] || '$0' }}</p>
-            <button (click)="producto = item" class="btn-select">Seleccionar</button>
+  <div class="row" *ngIf="categoriaSeleccionada !== 'todas'">
+    <div class="col-lg-8">
+      <h2 class="mb-4">Resultados para "{{ categoriaSeleccionada | uppercase }}"</h2>
+      <div class="row">
+        <div class="col-md-6 col-xl-4 mb-4" *ngFor="let item of obtenerProductos()">
+          <div class="card h-100 shadow-sm product-item">
+            <img [src]="imagenesProductos[item]" class="card-img-top p-2" [alt]="item" style="height: 180px; object-fit: contain;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ item }}</h5>
+              <p class="card-text fw-bold text-success">{{ precios[item] }}</p>
+              <button (click)="seleccionarProducto(item)" class="btn btn-warning mt-auto">Seleccionar</button>
+            </div>
           </div>
         </div>
-      </ng-container>
-
-      <ng-container *ngIf="categoriaSeleccionada === 'cocina'">
-        <div class="product-item" *ngFor="let item of ['Freidora de Aire', 'Cafetera Espresso', 'Hervidor Eléctrico']">
-          <img [src]="item === 'Freidora de Aire' ? 'https://kitchenit.cl/cdn/shop/files/FREIDORADEAIREDUALEDITION9L_8.jpg?v=1738006398&width=1200' : 
-                      item === 'Cafetera Espresso' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKw3s4NoY1x87SSjigm-cSOvivXoEFsb1oA&s' : 
-                      'https://ostercl.vtexassets.com/arquivos/ids/160532-800-auto?v=638918459886230000&width=800&height=auto&aspect=true'">
-          <div class="info">
-            <h4>{{ item }}</h4>
-            <p class="price">{{ precios[item] || '$0' }}</p>
-            <button (click)="producto = item" class="btn-select">Seleccionar</button>
-          </div>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="categoriaSeleccionada === 'herramientas'">
-        <div class="product-item" *ngFor="let item of ['Taladro Percutor', 'Set de Destornilladores', 'Esmeril Angular']">
-          <img [src]="item === 'Taladro Percutor' ? 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400' : 
-                      item === 'Set de Destornilladores' ? 'https://dz019gex1wne1.cloudfront.net/fit-in/700x700/filters:fill(FFFFFF):quality(90):format(webp)/_img_productos/kit-destornilladores-nappo-nhk-049-foto1.jpg' : 
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlEKsNItRQx0KsEBZViVk1nIOsuMeob593g&s'">
-          <div class="info">
-            <h4>{{ item }}</h4>
-            <p class="price">{{ precios[item] || '$0' }}</p>
-            <button (click)="producto = item" class="btn-select">Seleccionar</button>
-          </div>
-        </div>
-      </ng-container>
-
+      </div>
     </div>
 
-    <div class="checkout-mini" *ngIf="producto">
-      <h3>Pedido: {{ producto }}</h3>
-      <p>Precio Unitario: <strong>{{ precios[producto] }}</strong></p>
-      <input type="text" [(ngModel)]="direccion" placeholder="Ingresa tu dirección de envío">
-      <button (click)="registrarCompra()" class="btn-confirm">Confirmar y Pagar</button>
+    <div class="col-lg-4" *ngIf="producto">
+      <div class="card border-warning shadow p-3 checkout-mini">
+        <h3 class="h5 border-bottom pb-2">Resumen del Pedido</h3>
+        <p class="mb-1"><strong>Producto:</strong> {{ producto }}</p>
+        <p class="mb-3"><strong>Precio Unitario:</strong> {{ precios[producto] }}</p>
+        
+        <div *ngIf="isLoggedIn">
+          <form #compraForm="ngForm">
+            <div class="mb-3">
+              <label class="form-label small">Cantidad:</label>
+              <input 
+                type="number" 
+                name="cantidad"
+                class="form-control" 
+                [(ngModel)]="cantidad" 
+                required 
+                min="1" 
+                #cant="ngModel"
+                [ngClass]="{'is-invalid': cant.invalid && (cant.dirty || cant.touched)}">
+              <div class="invalid-feedback">La cantidad mínima es 1.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small">Dirección de envío:</label>
+              <input 
+                type="text" 
+                name="direccion"
+                class="form-control" 
+                [(ngModel)]="direccion" 
+                required 
+                minlength="5"
+                #dir="ngModel"
+                [ngClass]="{'is-invalid': dir.invalid && (dir.dirty || dir.touched)}"
+                placeholder="Calle, número, ciudad">
+              <div class="invalid-feedback">Ingresa una dirección válida (mín. 5 letras).</div>
+            </div>
+
+            <button 
+              (click)="registrarCompra()" 
+              class="btn btn-success w-100 fw-bold"
+              [disabled]="compraForm.invalid">
+              Confirmar y Pagar
+            </button>
+          </form>
+        </div>
+
+        <div *ngIf="!isLoggedIn" class="alert alert-light border-warning text-center mt-2">
+          <p class="text-danger small mb-2">⚠️ Debes iniciar sesión para completar tu compra</p>
+          <button type="button" routerLink="/" class="btn btn-outline-warning btn-sm w-100">
+            Ir al Ingreso
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

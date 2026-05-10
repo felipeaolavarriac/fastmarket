@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/* Colores corporativos FastMarket */
+:root {
+  --fastmarket-dark: #2c3e50;    /* Azul marino del navbar */
+  --fastmarket-yellow: #ffc107;  /* Amarillo de los botones */
+  --fastmarket-bg: #f4f7f6;      /* Gris claro de fondo */
+}
+
+body {
+  background-color: var(--fastmarket-bg);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Botón personalizado estilo Tienda */
+.btn-warning {
+  background-color: var(--fastmarket-yellow) !important;
+  border: 1px solid #e0a800 !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Tarjetas con estilo consistente */
+.card {
+  border-radius: 12px;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.category-card:hover, .product-item:hover {
+  transform: scale(1.03);
+}
