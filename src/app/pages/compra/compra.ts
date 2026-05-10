@@ -5,8 +5,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-compra',
   standalone: true,
   imports: [FormsModule],
-  templateUrl: './compra.html',
-  styleUrl: './compra.css'
+  templateUrl: './compra.html'
 })
 export class CompraComponent {
   producto: string = '';
@@ -14,11 +13,25 @@ export class CompraComponent {
   direccion: string = '';
 
   registrarCompra() {
-    console.log('Compra registrada:', {
+    // VALIDACIÓN 
+    if (!this.producto || !this.direccion || this.cantidad <= 0) {
+      alert('Por favor, completa todos los campos correctamente.');
+      return;
+    }
+
+    const nuevaCompra = {
       producto: this.producto,
       cantidad: this.cantidad,
-      direccion: this.direccion
-    });
-    alert('¡Compra realizada con éxito!');
+      direccion: this.direccion,
+      fecha: new Date().toLocaleDateString()
+    };
+
+    // LOCALSTORAGE (Punto 6 de la pauta)
+    let historial = JSON.parse(localStorage.getItem('compras') || '[]');
+    historial.push(nuevaCompra);
+    localStorage.setItem('compras', JSON.stringify(historial));
+
+    alert('Compra guardada en el sistema');
+    this.producto = ''; this.direccion = ''; this.cantidad = 1; // Limpiar campos
   }
 }

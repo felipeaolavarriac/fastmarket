@@ -1,10 +1,15 @@
 <div class="container mt-4">
-  <h2>Formulario de Compra</h2>
-  <form (ngSubmit)="registrarCompra()">
-    <input type="text" [(ngModel)]="producto" name="producto" class="form-control mb-2" placeholder="Nombre del Producto">
-    <input type="number" [(ngModel)]="cantidad" name="cantidad" class="form-control mb-2" placeholder="Cantidad">
-    <input type="text" [(ngModel)]="direccion" name="direccion" class="form-control mb-2" placeholder="Dirección de Envío">
+  <div class="card p-4 shadow-sm">
+    <h2>Realizar Compra</h2>
+    <label>Producto:</label>
+    <input type="text" [(ngModel)]="producto" class="form-control mb-2">
     
-    <button type="submit" class="btn btn-primary w-100">Finalizar Compra</button>
-  </form>
+    <label>Cantidad:</label>
+    <input type="number" [(ngModel)]="cantidad" class="form-control mb-2">
+    
+    <label>Dirección de Envío:</label>
+    <input type="text" [(ngModel)]="direccion" class="form-control mb-3">
+    
+    <button (click)="registrarCompra()" class="btn btn-success">Finalizar Compra</button>
+  </div>
 </div>

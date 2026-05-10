@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
+import { NavbarComponent } from './components/navbar/navbar'; // Verifica que termine en 'navbar'
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, Navbar],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [NavbarComponent, RouterOutlet], // Importamos el Navbar y el Outlet
+  template: '<app-navbar></app-navbar>' // Esto llama a tu menú
 })
-export class AppComponent {
-  title = 'tienda-javier-felipe';
-}
+export class AppComponent {}
