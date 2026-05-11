@@ -1,0 +1,36 @@
+/* Navbar con efecto de cristal oscuro */
+.navbar {
+  background: rgba(35, 47, 62, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #febd69;
+  padding: 15px 0;
+}
+
+.navbar-brand {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #ff9900 !important;
+  text-transform: uppercase;
+}
+
+/* Botones de navegación con estilo moderno */
+.navbar-nav .btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  color: #ffffff !important;
+}
+
+.navbar-nav .btn:hover {
+  background: rgba(255, 153, 0, 0.2);
+  color: #ff9900 !important;
+  transform: translateY(-2px);
+}
+
+.btn-outline-warning {
+  border: 2px solid #ff9900 !important;
+  color: #ff9900 !important;
+}

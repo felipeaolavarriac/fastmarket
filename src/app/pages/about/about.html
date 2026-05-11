@@ -1,21 +1,25 @@
-<div class="container mt-4">
-  <h2 class="text-success">Historial de Compras</h2>
-  <div class="row">
-    @for (item of comprasRecuperadas; track item) {
-      <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.producto }}</h5>
-            <p class="card-text">
-              <strong>Cantidad:</strong> {{ item.cantidad }}<br>
-              <strong>Dirección:</strong> {{ item.direccion }}
-            </p>
-            <span class="badge bg-primary">{{ item.fecha }}</span>
-          </div>
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white text-center py-4">
+      <h2 class="mb-0">Sobre FastMarket 🛒</h2>
+    </div>
+    <div class="card-body p-5 text-center">
+      <h4 class="text-secondary">Tu socio tecnológico de confianza</h4>
+      <p class="lead mt-3">
+        FastMarket es una plataforma desarrollada para facilitar la adquisición de productos tecnológicos de alta calidad. 
+        Nos enfocamos en brindar una experiencia de usuario rápida, segura y eficiente.
+      </p>
+      <hr class="my-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Nuestra Misión</h5>
+          <p>Innovar en el comercio electrónico proporcionando herramientas modernas para nuestros clientes.</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Equipo de Desarrollo</h5>
+          <p>Proyecto creado por <strong>Felipe y Javier</strong> para la Evaluación EVA03 de Angular 18.</p>
         </div>
       </div>
-    } @empty {
-      <p>No hay compras registradas aún.</p>
-    }
+    </div>
   </div>
 </div>

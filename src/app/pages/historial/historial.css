@@ -1,0 +1,96 @@
+.history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.history-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.history-header h1 {
+  color: #232f3e;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Tarjeta que envuelve la tabla */
+.table-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden; /* Para que los bordes de la tabla sigan el radio de la tarjeta */
+}
+
+.modern-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.modern-table thead {
+  background-color: #232f3e;
+  color: white;
+}
+
+.modern-table th, .modern-table td {
+  padding: 18px 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.product-name {
+  font-weight: 700;
+  color: #007185;
+}
+
+.address {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.badge-status {
+  background: #e7f4f5;
+  color: #007185;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.empty-msg {
+  text-align: center;
+  padding: 50px !important;
+  color: #888;
+  font-style: italic;
+}
+
+.actions {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.btn-return {
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-return:hover {
+  background: #f7ca00;
+}
+
+.badge-status.comprado {
+  background: #e6f4ea; /* Verde claro */
+  color: #1e7e34;      /* Verde oscuro */
+  border: 1px solid #c3e6cb;
+}
+
+.price-text {
+  font-weight: 600;
+  color: #B12704; /* Color de precio tipo Amazon */
+}

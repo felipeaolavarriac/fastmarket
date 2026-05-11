@@ -1,15 +1,80 @@
-<div class="container mt-4">
-  <div class="card p-4 shadow-sm">
-    <h2>Realizar Compra</h2>
-    <label>Producto:</label>
-    <input type="text" [(ngModel)]="producto" class="form-control mb-2">
+<div class="shop-container">
+  
+  <button class="btn-back" *ngIf="categoriaSeleccionada !== 'todas'" (click)="categoriaSeleccionada = 'todas'">
+    ← Volver a Categorías
+  </button>
+
+  <div class="category-grid" *ngIf="categoriaSeleccionada === 'todas'">
+    <div class="category-card" (click)="verCategoria('tecnologia')">
+      <h3>Mejora tu juego</h3>
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500" alt="Gaming">
+      <span class="link-text">Ver computación</span>
+    </div>
+
+    <div class="category-card" (click)="verCategoria('cocina')">
+      <h3>Electrodomésticos de cocina</h3>
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500" alt="Cocina">
+      <span class="link-text">Explorar cocina</span>
+    </div>
+
+    <div class="category-card" (click)="verCategoria('herramientas')">
+      <h3>Herramientas y construcción</h3>
+      <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=500" alt="Herramientas">
+      <span class="link-text">Ver herramientas</span>
+    </div>
+  </div>
+
+  <div class="products-view" *ngIf="categoriaSeleccionada !== 'todas'">
+    <h2 class="title-view">Resultados para "{{ categoriaSeleccionada | uppercase }}"</h2>
     
-    <label>Cantidad:</label>
-    <input type="number" [(ngModel)]="cantidad" class="form-control mb-2">
-    
-    <label>Dirección de Envío:</label>
-    <input type="text" [(ngModel)]="direccion" class="form-control mb-3">
-    
-    <button (click)="registrarCompra()" class="btn btn-success">Finalizar Compra</button>
+    <div class="product-list-grid">
+      
+      <ng-container *ngIf="categoriaSeleccionada === 'tecnologia'">
+        <div class="product-item" *ngFor="let item of ['Laptop Pro X1', 'Audífonos Noise', 'Monitor 34 UltraWide']">
+          <img [src]="item === 'Laptop Pro X1' ? 'https://p1-ofp.static.pub/medias/bWFzdGVyfHJvb3R8MjgwNzc3fGltYWdlL3BuZ3xoOWUvaGI4LzE0MDgwNDY4MDkwOTEwLnBuZ3w4MzIxNDk3M2E4NTA5ZjY5ZjYzYTc5ZDk3MWYwNjk3OTczNzYxMjM2MDU0ZTQ0MDBjMTU0ZmRhZWUxM2Q2ODYx/lenovo-laptop-thinkpad-x1-carbon-gen-8-hero.png' : 
+                      item === 'Audífonos Noise' ? 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' : 
+                      'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400'">
+          <div class="info">
+            <h4>{{ item }}</h4>
+            <p class="price">{{ precios[item] || '$0' }}</p>
+            <button (click)="producto = item" class="btn-select">Seleccionar</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="categoriaSeleccionada === 'cocina'">
+        <div class="product-item" *ngFor="let item of ['Freidora de Aire', 'Cafetera Espresso', 'Hervidor Eléctrico']">
+          <img [src]="item === 'Freidora de Aire' ? 'https://kitchenit.cl/cdn/shop/files/FREIDORADEAIREDUALEDITION9L_8.jpg?v=1738006398&width=1200' : 
+                      item === 'Cafetera Espresso' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKw3s4NoY1x87SSjigm-cSOvivXoEFsb1oA&s' : 
+                      'https://ostercl.vtexassets.com/arquivos/ids/160532-800-auto?v=638918459886230000&width=800&height=auto&aspect=true'">
+          <div class="info">
+            <h4>{{ item }}</h4>
+            <p class="price">{{ precios[item] || '$0' }}</p>
+            <button (click)="producto = item" class="btn-select">Seleccionar</button>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="categoriaSeleccionada === 'herramientas'">
+        <div class="product-item" *ngFor="let item of ['Taladro Percutor', 'Set de Destornilladores', 'Esmeril Angular']">
+          <img [src]="item === 'Taladro Percutor' ? 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=400' : 
+                      item === 'Set de Destornilladores' ? 'https://dz019gex1wne1.cloudfront.net/fit-in/700x700/filters:fill(FFFFFF):quality(90):format(webp)/_img_productos/kit-destornilladores-nappo-nhk-049-foto1.jpg' : 
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIlEKsNItRQx0KsEBZViVk1nIOsuMeob593g&s'">
+          <div class="info">
+            <h4>{{ item }}</h4>
+            <p class="price">{{ precios[item] || '$0' }}</p>
+            <button (click)="producto = item" class="btn-select">Seleccionar</button>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div class="checkout-mini" *ngIf="producto">
+      <h3>Pedido: {{ producto }}</h3>
+      <p>Precio Unitario: <strong>{{ precios[producto] }}</strong></p>
+      <input type="text" [(ngModel)]="direccion" placeholder="Ingresa tu dirección de envío">
+      <button (click)="registrarCompra()" class="btn-confirm">Confirmar y Pagar</button>
+    </div>
   </div>
 </div>

@@ -1,1 +1,35 @@
-<p>historial works!</p>
+<div class="history-container">
+  <header class="history-header">
+    <h1>Mis Compras Realizadas</h1>
+    <p>Detalle histórico de tus pedidos en FastMarket</p>
+  </header>
+
+  <div class="table-card">
+    <table class="modern-table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Costo Unitario</th> <th>Cantidad</th>
+          <th>Dirección</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of comprasRecuperadas; track item) {
+        <tr>
+          <td class="product-name">{{ item.producto }}</td>
+          <td class="price-text">{{ item.precio }}</td> <td>{{ item.cantidad }} ud.</td>
+          <td>{{ item.direccion }}</td>
+          <td>{{ item.fecha }}</td>
+          <td><span class="badge-status comprado">{{ item.estado }}</span></td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="6" class="empty-msg">No se encontraron compras.</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+/* 1. Fondo y Contenedor Principal */
+.shop-container {
+  padding: 20px;
+  background-color: #eaeded; /* Gris claro fondo Amazon */
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* 2. Grilla de Cajas Iniciales (Categorías) */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-card {
+  background: white;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card h3 {
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #0f1111;
+}
+
+/* Imagen de la CAJA de categoría */
+.category-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* Llena la caja */
+}
+
+/* 3. Vista de Productos (Listado tipo Amazon) */
+.product-list-grid {
+  display: flex;
+  flex-direction: column; /* Lista vertical */
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-item {
+  background: white;
+  display: flex; /* Imagen a la izquierda, info a la derecha */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  align-items: center;
+}
+
+/* IMAGEN DEL PRODUCTO (Importante para que se vea) */
+.product-item img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain; /* No estira la imagen, la mantiene perfecta */
+  margin-right: 25px;
+  background-color: #fff;
+}
+
+/* 4. Textos y Botones */
+.info {
+  flex: 1;
+}
+
+.info h4 {
+  color: #007185; /* Azul link Amazon */
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.price {
+  font-size: 24px;
+  color: #0f1111;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.btn-select {
+  background: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 20px;
+  padding: 8px 25px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213,217,217,.5);
+}
+
+.btn-select:hover {
+  background: #f7ca00;
+}
+
+/* 5. Otros Elementos */
+.btn-back {
+  background: none;
+  border: none;
+  color: #007185;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.btn-back:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.checkout-mini {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 12px;
+  z-index: 100;
+  border: 1px solid #ddd;
+  width: 300px;
+}
+
+.checkout-mini input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+}

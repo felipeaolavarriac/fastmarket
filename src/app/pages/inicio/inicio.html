@@ -1,20 +1,39 @@
-<div class="row justify-content-center">
-  <div class="col-md-5">
-    <div class="card shadow-lg border-0">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h4 class="mb-0">Ingreso Tienda</h4>
-      </div>
-      <div class="card-body p-4">
-        <div class="mb-3">
-          <label class="form-label fw-bold">Usuario</label>
-          <input type="text" class="form-control form-control-lg" placeholder="Ej: admin">
-        </div>
-        <div class="mb-4">
-          <label class="form-label fw-bold">Contraseña</label>
-          <input type="password" class="form-control form-control-lg" placeholder="Ej: 123">
-        </div>
-        <button class="btn btn-primary btn-lg w-100 shadow-sm">Ingresar</button>
-      </div>
+<div class="auth-container">
+  
+  <div class="auth-card">
+    <h2>{{ esRegistro ? 'Crear Cuenta' : 'Ingreso Tienda' }}</h2>
+
+    <div class="form-group">
+      <label>Gmail</label>
+      <input type="email" [(ngModel)]="gmail" placeholder="ejemplo@gmail.com">
     </div>
+
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" [(ngModel)]="clave" placeholder="••••••••">
+    </div>
+
+    <div class="form-group" *ngIf="esRegistro">
+      <label>Fecha de Nacimiento</label>
+      <input type="date" [(ngModel)]="fechaNacimiento">
+    </div>
+
+    <div class="actions">
+      <button *ngIf="!esRegistro" (click)="login()" class="btn-main">
+        Ingresar
+      </button>
+      
+      <button *ngIf="esRegistro" (click)="registrar()" class="btn-main btn-reg">
+        Registrarme
+      </button>
+    </div>
+
+    <p class="toggle-text">
+      {{ esRegistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?' }}
+      <span (click)="esRegistro = !esRegistro; limpiarCampos()">
+        {{ esRegistro ? 'Inicia Sesión' : 'Regístrate aquí' }}
+      </span>
+    </p>
   </div>
+
 </div>
