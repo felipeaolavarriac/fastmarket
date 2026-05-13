@@ -1,214 +1,157 @@
-/* 1. Contenedor General */
-.shop-container {
-  background-color: #eaeded; /* Fondo gris claro Amazon */
+/* 1. Base y Escenario */
+.shop-page {
+  background-color: #eaeded;
   min-height: 100vh;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* 2. Botón Volver */
-.btn-back {
+.nav-back-button {
   background: white;
-  border: 1px solid #d5d9d9;
+  border: 1px solid #adb1b8;
+  padding: 8px 16px;
   border-radius: 8px;
-  padding: 8px 15px;
   cursor: pointer;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  font-size: 14px;
+  margin-bottom: 25px;
+  transition: 0.2s;
 }
 
-.btn-back:hover {
+.nav-back-button:hover {
   background-color: #f7fafa;
 }
 
-/* 3. Grilla de Categorías (Vista Inicial) */
-.category-grid {
+/* 3. Grid de Categorías (Inicio) */
+.categories-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
-.category-card {
+.category-item {
   background: white;
   padding: 20px;
-  cursor: pointer;
   border-radius: 4px;
+  cursor: pointer;
   transition: transform 0.2s;
 }
 
-.category-card:hover {
-  transform: translateY(-5px);
+.category-item:hover {
+  transform: scale(1.02);
 }
 
-.category-card h3 {
-  font-size: 21px;
-  font-weight: 700;
-  color: #0f1111;
-  margin-bottom: 15px;
-}
+.category-item h3 { font-size: 20px; color: #0f1111; margin-bottom: 15px; }
 
-.category-card img {
+.category-item img {
   width: 100%;
-  height: 250px;
+  height: 280px;
   object-fit: cover;
 }
 
-.link-text {
-  color: #007185;
-  display: block;
-  margin-top: 15px;
-  font-size: 13px;
-  font-weight: 500;
-}
+.action-link { color: #007185; font-size: 13px; font-weight: bold; margin-top: 15px; display: block; }
 
-/* 4. Vista de Productos (Listado) */
-.products-view {
-  max-width: 1200px;
-  margin: 0 auto;
+/* 4. Vista de Resultados (Flexbox para el lateral) */
+.results-view {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-.title-view {
-  width: 100%;
-  font-size: 24px;
-  color: #0f1111;
-  margin-bottom: 20px;
-}
+.products-column { flex: 3; }
 
-.product-list-grid {
-  flex: 3;
+.products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
 }
 
-.product-item {
+/* 5. Tarjeta de Producto */
+.product-card {
   background: white;
-  border: 1px solid #e7e7e7;
+  border: 1px solid #ddd;
   padding: 15px;
-  border-radius: 4px;
-  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.product-item img {
-  max-width: 100%;
+.product-img-box {
   height: 180px;
-  object-fit: contain;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.info h4 {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #0f1111;
-}
+.product-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-.price {
-  font-size: 18px;
-  font-weight: 700;
-  color: #B12704; /* Rojo precio Amazon */
-  margin-bottom: 10px;
-}
+.product-price { color: #B12704; font-size: 1.2rem; font-weight: bold; }
 
-.btn-select {
-  background-color: #ffd814;
+.select-btn {
+  background: #ffd814;
   border: 1px solid #fcd200;
   border-radius: 20px;
-  padding: 8px 20px;
+  padding: 8px;
+  margin-top: auto;
   cursor: pointer;
-  font-size: 13px;
 }
 
-.btn-select:hover {
-  background-color: #f7ca00;
-}
-
-/* 5. Panel de Compra (Checkout Lateral) */
-.checkout-mini {
+/* 6. Panel Checkout (Lateral Pegajoso) */
+.checkout-panel {
   flex: 1;
-  min-width: 300px;
+  min-width: 320px;
+}
+
+.checkout-card {
   background: white;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  height: fit-content;
   position: sticky;
-  top: 20px;
+  top: 20px; /* Se queda pegado al bajar el scroll */
 }
 
-.checkout-mini h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+.checkout-form label { display: block; margin-top: 15px; font-size: 13px; font-weight: bold; }
 
-.checkout-mini input {
+.checkout-form input {
   width: 100%;
   padding: 10px;
-  margin: 15px 0;
+  margin-top: 5px;
   border: 1px solid #a6a6a6;
-  border-radius: 3px;
-  box-sizing: border-box;
+  border-radius: 4px;
 }
 
-.btn-confirm {
+.confirm-btn {
   width: 100%;
   background: #ffa41c;
   border: 1px solid #ff8f00;
+  padding: 12px;
+  margin-top: 20px;
   border-radius: 8px;
-  padding: 10px;
   font-weight: bold;
   cursor: pointer;
 }
 
-.btn-confirm:hover {
-  background: #f79b06;
-}
+.confirm-btn:disabled { background: #f0f2f2; border-color: #d5d9d9; color: #888; cursor: not-allowed; }
 
-/* 6. ESTILOS DE BLOQUEO (Usuario no logueado) */
-.login-warning {
-  background-color: #fff8f2; /* Naranja muy suave */
-  border: 1px solid #ffb400;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 15px;
-}
+/* 7. Alerta de Invitado */
+.warning-msg { color: #c45500; font-weight: bold; font-size: 13px; text-align: center; }
 
-.warning-text {
-  color: #c45500;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  line-height: 1.4;
-}
-
-.btn-auth-redirect {
+.redirect-btn {
   width: 100%;
-  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-  border: 1px solid #a88734;
-  border-radius: 8px;
+  background: white;
+  border: 1px solid #adb1b8;
   padding: 10px;
-  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 10px;
   cursor: pointer;
-  font-size: 13px;
-}
-
-.btn-auth-redirect:hover {
-  background: linear-gradient(to bottom, #f5d78e, #eeb933);
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
-  .products-view {
-    flex-direction: column;
-  }
-  .checkout-mini {
-    position: static;
-    width: 100%;
-  }
+@media (max-width: 900px) {
+  .results-view { flex-direction: column; }
+  .checkout-panel { width: 100%; }
 }

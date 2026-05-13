@@ -12,7 +12,7 @@ export class HistorialComponent implements OnInit {
   compras: any[] = [];
 
   ngOnInit() {
-    // Recuperar datos de localStorage (Punto 6 de la pauta)
+    // Recuperar datos de localStorage
     const datos = localStorage.getItem('compras');
     if (datos) {
       this.compras = JSON.parse(datos);

@@ -1,110 +1,76 @@
-<div class="container mt-4 shop-container">
-  <button class="btn btn-outline-secondary mb-4" *ngIf="categoriaSeleccionada !== 'todas'" (click)="categoriaSeleccionada = 'todas'">
+<div class="shop-page">
+  
+  <button class="nav-back-button" *ngIf="categoriaSeleccionada !== 'todas'" (click)="categoriaSeleccionada = 'todas'">
     ← Volver a Categorías
   </button>
 
-  <div class="row" *ngIf="categoriaSeleccionada === 'todas'">
-    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'tecnologia'">
-      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
-        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500" class="card-img-top" alt="Gaming">
-        <div class="card-body text-center">
-          <h5 class="card-title">Mejora tu juego</h5>
-          <p class="text-primary">Ver computación</p>
-        </div>
-      </div>
-    </div>
+  <section class="categories-container" *ngIf="categoriaSeleccionada === 'todas'">
+    <article class="category-item" (click)="categoriaSeleccionada = 'tecnologia'">
+      <header><h3>Mejora tu juego</h3></header>
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500" alt="Gaming">
+      <footer><span class="action-link">Ver computación</span></footer>
+    </article>
 
-    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'cocina'">
-      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
-        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500" class="card-img-top" alt="Cocina">
-        <div class="card-body text-center">
-          <h5 class="card-title">Electrodomésticos de cocina</h5>
-          <p class="text-primary">Explorar cocina</p>
-        </div>
-      </div>
-    </div>
+    <article class="category-item" (click)="categoriaSeleccionada = 'cocina'">
+      <header><h3>Electrodomésticos de cocina</h3></header>
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=500" alt="Cocina">
+      <footer><span class="action-link">Explorar cocina</span></footer>
+    </article>
 
-    <div class="col-md-4 mb-3" (click)="categoriaSeleccionada = 'herramientas'">
-      <div class="card h-100 shadow-sm category-card" style="cursor: pointer;">
-        <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=500" class="card-img-top" alt="Herramientas">
-        <div class="card-body text-center">
-          <h5 class="card-title">Herramientas y construcción</h5>
-          <p class="text-primary">Ver herramientas</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    <article class="category-item" (click)="categoriaSeleccionada = 'herramientas'">
+      <header><h3>Herramientas y construcción</h3></header>
+      <img src="https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=500" alt="Herramientas">
+      <footer><span class="action-link">Ver herramientas</span></footer>
+    </article>
+  </section>
 
-  <div class="row" *ngIf="categoriaSeleccionada !== 'todas'">
-    <div class="col-lg-8">
-      <h2 class="mb-4">Resultados para "{{ categoriaSeleccionada | uppercase }}"</h2>
-      <div class="row">
-        <div class="col-md-6 col-xl-4 mb-4" *ngFor="let item of obtenerProductos()">
-          <div class="card h-100 shadow-sm product-item">
-            <img [src]="imagenesProductos[item]" class="card-img-top p-2" [alt]="item" style="height: 180px; object-fit: contain;">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">{{ item }}</h5>
-              <p class="card-text fw-bold text-success">{{ precios[item] }}</p>
-              <button (click)="seleccionarProducto(item)" class="btn btn-warning mt-auto">Seleccionar</button>
-            </div>
+  <section class="results-view" *ngIf="categoriaSeleccionada !== 'todas'">
+    
+    <div class="products-column">
+      <h2 class="category-title">Resultados para "{{ categoriaSeleccionada | uppercase }}"</h2>
+      
+      <div class="products-grid">
+        <article class="product-card" *ngFor="let item of obtenerProductos()">
+          <div class="product-img-box">
+            <img [src]="imagenesProductos[item]" [alt]="item">
           </div>
-        </div>
+          <div class="product-info">
+            <h4>{{ item }}</h4>
+            <p class="product-price">{{ precios[item] }}</p>
+            <button (click)="seleccionarProducto(item)" class="select-btn">Seleccionar</button>
+          </div>
+        </article>
       </div>
     </div>
 
-    <div class="col-lg-4" *ngIf="producto">
-      <div class="card border-warning shadow p-3 checkout-mini">
-        <h3 class="h5 border-bottom pb-2">Resumen del Pedido</h3>
-        <p class="mb-1"><strong>Producto:</strong> {{ producto }}</p>
-        <p class="mb-3"><strong>Precio Unitario:</strong> {{ precios[producto] }}</p>
-        
-        <div *ngIf="isLoggedIn">
-          <form #compraForm="ngForm">
-            <div class="mb-3">
-              <label class="form-label small">Cantidad:</label>
-              <input 
-                type="number" 
-                name="cantidad"
-                class="form-control" 
-                [(ngModel)]="cantidad" 
-                required 
-                min="1" 
-                #cant="ngModel"
-                [ngClass]="{'is-invalid': cant.invalid && (cant.dirty || cant.touched)}">
-              <div class="invalid-feedback">La cantidad mínima es 1.</div>
-            </div>
+    <aside class="checkout-panel" *ngIf="producto">
+      <div class="checkout-card">
+        <h3>Resumen del Pedido</h3>
+        <div class="order-details">
+          <p><strong>Producto:</strong> {{ producto }}</p>
+          <p><strong>Precio:</strong> {{ precios[producto] }}</p>
+        </div>
 
-            <div class="mb-3">
-              <label class="form-label small">Dirección de envío:</label>
-              <input 
-                type="text" 
-                name="direccion"
-                class="form-control" 
-                [(ngModel)]="direccion" 
-                required 
-                minlength="5"
-                #dir="ngModel"
-                [ngClass]="{'is-invalid': dir.invalid && (dir.dirty || dir.touched)}"
-                placeholder="Calle, número, ciudad">
-              <div class="invalid-feedback">Ingresa una dirección válida (mín. 5 letras).</div>
-            </div>
+        <div class="auth-area" *ngIf="isLoggedIn">
+          <form #compraForm="ngForm" class="checkout-form">
+            <label>Cantidad:</label>
+            <input type="number" name="cantidad" [(ngModel)]="cantidad" required min="1">
+            
+            <label>Dirección de envío:</label>
+            <input type="text" name="direccion" [(ngModel)]="direccion" required minlength="5" placeholder="Calle, número, ciudad">
 
-            <button 
-              (click)="registrarCompra()" 
-              class="btn btn-success w-100 fw-bold"
-              [disabled]="compraForm.invalid">
+            <button (click)="registrarCompra()" class="confirm-btn" [disabled]="compraForm.invalid">
               Confirmar y Pagar
             </button>
           </form>
         </div>
 
-        <div *ngIf="!isLoggedIn" class="alert alert-light border-warning text-center mt-2">
-          <p class="text-danger small mb-2">⚠️ Debes iniciar sesión para completar tu compra</p>
-          <button type="button" routerLink="/" class="btn btn-outline-warning btn-sm w-100">
-            Ir al Ingreso
-          </button>
+        <div class="guest-area" *ngIf="!isLoggedIn">
+          <p class="warning-msg">⚠️ Debes iniciar sesión para comprar</p>
+          <button routerLink="/" class="redirect-btn">Ir al Ingreso</button>
         </div>
       </div>
-    </div>
-  </div>
+    </aside>
+
+  </section>
 </div>

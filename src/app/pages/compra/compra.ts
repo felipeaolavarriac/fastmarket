@@ -79,7 +79,7 @@ export class CompraComponent {
     
     alert('¡Compra realizada con éxito!');
     
-    // Limpiar formulario y redirigir al historial para cumplir con "Visualización de datos"
+    // Limpiar formulario y redirigir al historial
     this.producto = '';
     this.router.navigate(['/historial']);
   }
