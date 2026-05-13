@@ -1,122 +1,93 @@
-/* Contenedor principal con fondo gris claro (Amazon Style) */
-.about-wrapper {
-  background-color: #eaeded;
+/* 1. Fondo de la página y centrado */
+.about-page {
+  background-color: #eaeded; /* Gris Amazon */
   min-height: 90vh;
-  padding: 40px 20px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
 }
 
-.about-container {
+/* 2. La "Tarjeta" blanca central */
+.card-container {
   max-width: 900px;
+  width: 100%;
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Encabezado con degradado dinámico */
-.about-header {
-  background: linear-gradient(135deg, #0062ff 0%, #003db3 100%);
+/* 3. Encabezado (Header) */
+.card-header {
+  background: linear-gradient(135deg, #0062ff, #003db3);
   color: white;
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
 }
 
-.about-header h1 {
+.card-header h1 {
   font-size: 2.5rem;
-  font-weight: 800;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  letter-spacing: 1px;
+/* 4. Cuerpo (Body) */
+.card-body {
+  padding: 40px;
 }
 
-/* Cuerpo de la página */
-.about-content {
-  padding: 50px;
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.main-info h2 {
+.intro h2 {
   color: #232f3e;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-bottom: 15px;
 }
 
-.main-info p {
-  color: #565959;
-  line-height: 1.8;
-  font-size: 1.1rem;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
+.separator {
+  border: 0;
+  height: 1px;
+  background: #e7e7e7;
+  margin: 30px 0;
 }
 
-.divider {
-  height: 2px;
-  background: #f0f2f2;
-  margin: 40px 0;
-}
-
-/* Tarjetas de Misión y Equipo */
-.info-grid {
+/* 5. Grilla de información (Grid) */
+.grid-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
   gap: 30px;
 }
 
-.info-card {
+.info-block {
   text-align: center;
   padding: 20px;
   transition: transform 0.3s ease;
 }
 
-.info-card:hover {
-  transform: translateY(-5px);
+.info-block:hover {
+  transform: translateY(-10px); /* Efecto al pasar el mouse */
 }
 
-.icon-circle {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  display: inline-block;
-  background: #f0f7ff;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  border-radius: 50%;
+.icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
 }
 
-.info-card h3 {
-  color: #232f3e;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.info-card p {
-  color: #565959;
-  font-size: 0.95rem;
-}
-
-.about-footer {
-  margin-top: 50px;
+/* 6. Pie de página (Footer) */
+.card-footer {
   text-align: center;
-  border-top: 1px solid #f0f2f2;
-  padding-top: 20px;
-  color: #a0a0a0;
-  font-size: 0.85rem;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #888;
 }
 
-/* Responsivo para celulares */
+/* 7. Responsivo (Móviles) */
 @media (max-width: 768px) {
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-  .about-content {
-    padding: 30px 20px;
+  .grid-info {
+    grid-template-columns: 1fr; /* Una sola columna en celulares */
   }
 }
