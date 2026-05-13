@@ -1,60 +1,58 @@
-<div class="container mt-5">
-  <div class="text-center mb-4">
-    <h2 class="fw-bold">Mis Compras Realizadas</h2>
-    <p class="text-muted">Detalle histórico de tus pedidos en FastMarket</p>
+<div class="history-page">
+  <header class="page-header">
+    <h1>Mis Compras Realizadas</h1>
+    <p>Detalle histórico de tus pedidos en FastMarket</p>
+  </header>
+
+  <div class="table-container">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Costo Unitario</th>
+          <th>Cantidad</th>
+          <th>Dirección</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr *ngIf="compras.length === 0">
+          <td colspan="7" class="empty-data">No se encontraron compras.</td>
+        </tr>
+
+        <tr *ngFor="let compra of compras">
+          <td class="col-product">{{ compra.producto }}</td>
+          <td class="col-price">{{ compra.precio }}</td>
+          <td>{{ compra.cantidad }} ud.</td>
+          <td class="col-address">{{ compra.direccion }}</td>
+          <td>{{ compra.fecha }}</td>
+          <td>
+            <span class="status-pill">
+              {{ compra.estado }}
+            </span>
+          </td>
+          <td class="col-subtotal">
+            ${{ (convertirPrecioANumero(compra.precio) * compra.cantidad).toLocaleString('es-CL') }}
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot *ngIf="compras.length > 0">
+        <tr>
+          <td colspan="6" class="total-label">TOTAL COMPRADO EN LA TIENDA:</td>
+          <td class="total-value">
+            ${{ calcularTotalGeneral().toLocaleString('es-CL') }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
-  <div class="card shadow border-0">
-    <div class="table-responsive">
-      <table class="table table-hover align-middle mb-0">
-        <thead class="table-dark">
-          <tr>
-            <th>Producto</th>
-            <th>Costo Unitario</th>
-            <th>Cantidad</th>
-            <th>Dirección</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Subtotal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngIf="compras.length === 0">
-            <td colspan="7" class="text-center py-4 text-muted">
-              No se encontraron compras.
-            </td>
-          </tr>
-
-          <tr *ngFor="let compra of compras">
-            <td class="fw-bold text-primary">{{ compra.producto }}</td>
-            <td class="text-danger fw-bold">{{ compra.precio }}</td>
-            <td>{{ compra.cantidad }} ud.</td>
-            <td>{{ compra.direccion }}</td>
-            <td>{{ compra.fecha }}</td>
-            <td>
-              <span class="badge bg-success-subtle text-success border border-success px-3">
-                {{ compra.estado }}
-              </span>
-            </td>
-            <td class="fw-bold">
-              ${{ (convertirPrecioANumero(compra.precio) * compra.cantidad).toLocaleString('es-CL') }}
-            </td>
-          </tr>
-        </tbody>
-        <tfoot *ngIf="compras.length > 0" class="table-light">
-          <tr>
-            <td colspan="6" class="text-end fw-bold fs-5">TOTAL COMPRADO EN LA TIENDA:</td>
-            <td class="text-success fw-bold fs-5">
-              ${{ calcularTotalGeneral().toLocaleString('es-CL') }}
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </div>
-
-  <div class="text-center mt-4">
-    <button class="btn btn-outline-danger btn-sm" (click)="limpiarHistorial()">
+  <div class="footer-actions">
+    <button class="btn-outline-danger" (click)="limpiarHistorial()">
       Vaciar Historial
     </button>
   </div>
