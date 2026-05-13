@@ -1,36 +1,65 @@
-/* Navbar con efecto de cristal oscuro */
-.navbar {
-  background: rgba(35, 47, 62, 0.95) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 2px solid #febd69;
-  padding: 15px 0;
+/* Contenedor Principal de la Barra */
+.main-navbar {
+  background-color: #212529; /* Color oscuro (bg-dark) */
+  padding: 0.8rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Sombra (shadow-sm) */
 }
 
-.navbar-brand {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #ff9900 !important;
-  text-transform: uppercase;
+/* Alineación y Centrado */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, botones a la derecha */
+  align-items: center;
+  padding: 0 20px;
 }
 
-/* Botones de navegación con estilo moderno */
-.navbar-nav .btn {
-  border: none;
-  border-radius: 8px;
-  padding: 8px 20px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  color: #ffffff !important;
+/* Estilo del Logo */
+.brand-logo {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
-.navbar-nav .btn:hover {
-  background: rgba(255, 153, 0, 0.2);
-  color: #ff9900 !important;
-  transform: translateY(-2px);
+/* Contenedor de botones */
+.nav-links {
+  display: flex;
+  gap: 15px; /* Espaciado entre botones (me-2) */
 }
 
-.btn-outline-warning {
-  border: 2px solid #ff9900 !important;
-  color: #ff9900 !important;
+/* Estilo Base de los Botones (nav-btn) */
+.nav-btn {
+  text-decoration: none;
+  color: #f8f9fa;
+  border: 1px solid #f8f9fa; /* Borde claro (outline-light) */
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease; /* Suaviza el cambio de color */
+}
+
+/* Efecto Hover (al pasar el mouse) */
+.nav-btn:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* Botón "Nosotros" resaltado */
+.btn-highlight {
+  border-color: #ffc107; /* Color amarillo (warning) */
+  color: #ffc107;
+}
+
+.btn-highlight:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Espaciado del contenido principal */
+.content {
+  max-width: 1200px;
+  margin: 40px auto; /* Margen superior (mt-5) */
+  padding: 0 20px;
 }

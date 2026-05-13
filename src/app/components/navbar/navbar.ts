@@ -4,8 +4,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterOutlet], // Esto permite que los botones funcionen
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class NavbarComponent {} // Asegúrate de que el nombre sea exactamente este
+export class NavbarComponent {}

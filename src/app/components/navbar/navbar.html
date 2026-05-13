@@ -1,16 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold" routerLink="/">🛒 FastMarket</a>
+<nav class="main-navbar">
+  <div class="nav-container">
+    <a class="brand-logo" routerLink="/">🛒 FastMarket</a>
 
-    <div class="navbar-nav ms-auto">
-      <a class="btn btn-outline-light me-2" routerLink="/">Inicio</a>
-      <a class="btn btn-outline-light me-2" routerLink="/compra">Carrito</a>
-      <a class="btn btn-outline-light me-2" routerLink="/historial">Mis Compras</a>
-      <a class="btn btn-outline-warning" routerLink="/about">Nosotros</a>
+    <div class="nav-links">
+      <a class="nav-btn" routerLink="/">Inicio</a>
+      <a class="nav-btn" routerLink="/compra">Carrito</a>
+      <a class="nav-btn" routerLink="/historial">Mis Compras</a>
+      <a class="nav-btn btn-highlight" routerLink="/about">Nosotros</a>
     </div>
   </div>
 </nav>
 
-<div class="container mt-5">
+<main class="content">
   <router-outlet></router-outlet>
-</div>
+</main>
